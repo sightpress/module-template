@@ -1,0 +1,8 @@
+# composer create-project installs this repository's package, so it must keep the tests and tooling a new module needs.
+# Only what runs this repository's own releases stays out. A new module gets tools/module.gitattributes as its
+# .gitattributes (see post-create-project-cmd in composer.json), so the module's own package ships no tooling.
+/.github/rulesets export-ignore
+/.github/workflows/release-please.yml export-ignore
+/.release-please-manifest.json export-ignore
+/build export-ignore
+/release-please-config.json export-ignore

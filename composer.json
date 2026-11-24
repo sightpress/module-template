@@ -1,0 +1,102 @@
+{
+  "name": "sightpress/module-template",
+  "description": "A starting point for a SightPress module: SightPress is a powerful CMS for everyone, designed with blind and low-vision creators and audiences in mind. Create your own module from it with composer create-project, then make it yours.",
+  "type": "sightpress-module",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "cms",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "module",
+    "sightpress-module",
+    "template"
+  ],
+  "homepage": "https://github.com/sightpress/module-template",
+  "support": {
+    "issues": "https://github.com/sightpress/module-template/issues",
+    "source": "https://github.com/sightpress/module-template"
+  },
+  "require": {
+    "php": ">=8.5",
+    "sightpress/module-interface": "^0.5"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3",
+    "phpstan/extension-installer": "^1",
+    "phpstan/phpstan": "^2",
+    "phpstan/phpstan-phpunit": "^2",
+    "phpstan/phpstan-strict-rules": "^2",
+    "phpunit/phpunit": "^13",
+    "rector/rector": "^2",
+    "sightpress/core": "0.4.x-dev || ^0.5@dev"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Acme\\MyModule\\": "src/",
+      "Acme\\MyModule\\Migrations\\": "migrations/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Acme\\MyModule\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "0.1.x-dev"
+    },
+    "sightpress": {
+      "module": "Acme\\MyModule\\MyModule",
+      "features": {
+        "acme.my_module": {
+          "name": "My module",
+          "description": "Say in one or two sentences what your module adds to a site.",
+          "when-off": "Say what visitors and admins no longer see while it is off."
+        }
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": "@php -r \"rename('tools/module.gitattributes', '.gitattributes');\"",
+    "cs-check": "php-cs-fixer check --diff",
+    "cs-fix": "php-cs-fixer fix",
+    "phpstan": "phpstan analyse --no-progress",
+    "rector": "rector process",
+    "test": "phpunit",
+    "test:unit": "phpunit --testsuite unit",
+    "test:integration": "phpunit --testsuite integration",
+    "test:coverage": "@php tools/coverage-check.php",
+    "check": [
+      "@composer validate --strict --no-check-lock",
+      "@cs-check",
+      "@phpstan",
+      "@test:coverage",
+      "@test:integration"
+    ],
+    "fix": [
+      "@rector",
+      "@cs-fix"
+    ]
+  },
+  "scripts-descriptions": {
+    "cs-check": "Check the code style (PSR-12) without changing files.",
+    "cs-fix": "Fix the code style (PSR-12).",
+    "phpstan": "Run static analysis (PHPStan, level max).",
+    "rector": "Apply automated refactorings (PHP 8.5 set).",
+    "test": "Run the unit and integration test suites.",
+    "test:unit": "Run the unit test suite.",
+    "test:integration": "Run the integration test suite: the module installed in SightPress.",
+    "test:coverage": "Run the unit suite with coverage; fail below 100% lines or methods or on any coverage ignore annotation.",
+    "check": "Run every check that must pass before a commit.",
+    "fix": "Apply Rector refactorings, then fix the code style."
+  }
+}

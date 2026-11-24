@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The module's texts in British English, the language SightPress starts in. Add a unit for every text people see,
+    and a file like this one for each language you translate it into (for example my_module.pt-PT.xlf).
+    Templates use them with t('…', {}, 'my_module').
+-->
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-GB" trgLang="en-GB">
+  <file id="my_module">
+    <unit id="name"><segment><source>My module</source><target>My module</target></segment></unit>
+  </file>
+</xliff>
